@@ -101,3 +101,6 @@ alias nr='npm run'
 
 alias yayy='yay -Syu --answerdiff None --sudoloop --mflags --nocheck'
 alias yayyy='yay -Syu --answerclean All --answerdiff None --sudoloop --mflags --nocheck --noconfirm'
+
+alias cld='claude --dangerously-skip-permissions'
+alias cldr='claude --dangerously-skip-permissions --resume'

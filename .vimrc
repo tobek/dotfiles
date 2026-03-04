@@ -1,9 +1,18 @@
-" Set up vim-plug. Note: do `:PlugInstall` in vim after adding plugins here
-call plug#begin()
-Plug 'leafgarland/typescript-vim'
-Plug 'peitalin/vim-jsx-typescript'
-call plug#end()
-autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
+" Auto-install vim-plug if not found
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+" Set up vim-plug. Note: auto-installs on first run. Run `:PlugInstall` manually when adding new plugins
+if filereadable(expand('~/.vim/autoload/plug.vim'))
+  call plug#begin()
+  Plug 'leafgarland/typescript-vim'
+  Plug 'peitalin/vim-jsx-typescript'
+  call plug#end()
+  autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
+endif
 
 " Show a colored line at 100 characters:
 ":set colorcolumn=100

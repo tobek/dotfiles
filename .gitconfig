@@ -1,0 +1,44 @@
+[user]
+	name = Toby Fox
+	email = tobyfox@gmail.com
+[color]
+	ui = auto
+[alias]
+	s = status -sb
+	del = "!f() { git branch -D $1 && git push origin :$1; }; f"
+	l = log --pretty=format:'%C(auto)%h %C(auto,green)%ad%C(auto,reset) %C(auto,cyan)%an%C(auto,reset) %C(auto)%s%d' --graph --date=short
+	sigh = checkout --
+	shove = push -f
+	wip = commit -am \"WIP\" --no-verify
+	UNWIP = !git reset --soft HEAD~ && git reset
+	stiff = diff --staged
+	tear = "!f() { git checkout -b \"$1\" && git push -u origin \"$1\"; }; f"
+	co = checkout
+	st = status
+	d = diff
+	alias = "! esc=; git config --get-regexp ^alias\\. | sed -e s/^alias\\./\\[35m/ -e s/\\ /\\ \\[37m=\\>\\[0m\\ / | sort"
+	catchup = merge --ff-only
+	wed = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; git add `f`"
+	betroth = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; vim `f`"
+	chaff = !git ls-files --others --exclude-standard | cut -f2 | sort -u
+	reap = "!f() { git ls-files --others --exclude-standard | cut -f2 | sort -u ; }; rm -i `f`"
+	dowry = ! git ls-files --unmerged | cut -f2 | sort -u
+	conclude = ! OLD_BRANCH=`git symbolic-ref --short HEAD` && git checkout main && git pull && git del $OLD_BRANCH
+	reckon = ! OLD_BRANCH=`git symbolic-ref --short HEAD` && git stash && git checkout main && git pull && git del $OLD_BRANCH && git stash pop
+	peek = stash show -p stash@{0}
+	meld = ! git fetch && git rebase origin/main
+[core]
+	pager = diff-so-fancy | less --tabs=4 -RFX
+	editor = vim
+	attributesfile = /home/toby/.gitattributes
+[cola]
+	spellcheck = false
+	fontdiff = Dank Mono,10,-1,5,50,0,0,0,0,0
+	hidpi = 1
+	icontheme = dark
+	theme = flat-dark-red
+	startupmode = list
+[pull]
+	ff = only
+[init]
+	defaultBranch = main

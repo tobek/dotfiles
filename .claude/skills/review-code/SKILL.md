@@ -20,12 +20,12 @@ Provide a code review for uncommitted changes in the current git repository, or 
 
 To do this, follow these steps precisely:
 
-1. Determine the review mode:
+1. Determine the review mode and the exact diff command to use for the rest of the review:
    - If no arguments are provided, review uncommitted changes using `git diff HEAD`
    - If a branch argument is provided (e.g., "origin/main"), review the diff between the current branch and the specified branch using `git diff <branch>...HEAD`
    - If a more complex argument is provided, follow its instructions as requested
 
-   Use a Haiku agent to check if there are changes to review (i.e., not trivial whitespace or comment-only changes). If no meaningful changes exist, do not proceed.
+   Lock in the diff command now. Use a Haiku agent to run ONLY that exact diff command and check if there are meaningful changes to review (i.e., not trivial whitespace or comment-only changes). The agent must NOT run other diff commands or suggest switching to a different diff. If no meaningful changes exist, do not proceed.
 
 2. Use another Haiku agent to give you a list of file paths to (but not the contents of) any relevant CLAUDE.md files from the codebase: the root CLAUDE.md file (if one exists), as well as any CLAUDE.md files in the directories whose files were modified.
 

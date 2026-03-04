@@ -24,8 +24,10 @@ export HISTSIZE=50000 # custom history length
 export HISTFILESIZE=10000000 # custom history file size
 shopt -s histappend # append to history, don't overwrite
 
-export LC_ALL="en_US.UTF-8"
-export LC_CTYPE="en_US.UTF-8"
+if locale -a 2>/dev/null | grep -qi 'en_US\.utf-\?8'; then
+  export LC_ALL="en_US.UTF-8"
+  export LC_CTYPE="en_US.UTF-8"
+fi
 
 [ -f "$HOME/.ripgreprc" ] && export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 

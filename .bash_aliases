@@ -110,3 +110,5 @@ alias clo='claude --model opus -p'
 alias clc='claude --model sonnet -p -c'
 alias clhc='claude --model haiku -p -c'
 alias cloc='claude --model opus -p -c'
+
+alias ntfy='curl ntfy.sh/tobek -d'

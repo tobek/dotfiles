@@ -27,6 +27,7 @@
 	reckon = ! OLD_BRANCH=`git symbolic-ref --short HEAD` && git stash && git checkout main && git pull && git del $OLD_BRANCH && git stash pop
 	peek = stash show -p stash@{0}
 	meld = ! git fetch && git rebase origin/main
+	restack = "!f() { git fetch origin && git rebase --onto origin/main \"origin/$1\" && git push --force-with-lease; }; f"
 [core]
 	pager = diff-so-fancy | less --tabs=4 -RFX
 	editor = vim

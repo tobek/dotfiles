@@ -27,7 +27,7 @@ To do this, follow these steps precisely:
 
    Lock in the diff command now. Use a Haiku agent to run ONLY that exact diff command and check if there are meaningful changes to review (i.e., not trivial whitespace or comment-only changes). The agent must NOT run other diff commands or suggest switching to a different diff. If no meaningful changes exist, do not proceed.
 
-2. Use another Haiku agent to give you a list of file paths to (but not the contents of) any relevant CLAUDE.md files from the codebase: the root CLAUDE.md file (if one exists), as well as any CLAUDE.md files in the directories whose files were modified.
+2. Use another Haiku agent to give you a list of file paths to (but not the contents of) any relevant CLAUDE.md files from the codebase: the root CLAUDE.md file (if one exists), as well as any CLAUDE.md files in the directories whose files were modified. Important: CLAUDE.md files may be symlinks, so the agent must use `find -L <dir> -maxdepth 1 -name 'CLAUDE.md'` (which follows symlinks) rather than Glob (which does not).
 
 3. Launch a Sonnet agent to analyze the git diff and return a summary of the changes.
 

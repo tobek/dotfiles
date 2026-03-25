@@ -44,7 +44,7 @@ To do this, follow these steps precisely:
 
 7. Present the results to the user with the following format:
    - For issues found: List each issue, numbered, with a brief description, the file and line numbers, and why it was flagged (CLAUDE.md, bug, etc.)
-   - For issues found but validated as false positives: Extremely briefly (short sentence) sumarize each, and why it is not an issue
+   - For issues found but validated as false positives: Extremely briefly (short sentence) summarize each, and why it is not an issue
    - For no issues: Simply state "No issues found. Checked for bugs and CLAUDE.md compliance."
 
 Examples of false positives to avoid (for steps 4 and 5):

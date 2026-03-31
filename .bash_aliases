@@ -28,6 +28,7 @@ alias diff='diff --color=auto'
 alias grep='grep --color=auto'
 alias ffmpeg='ffmpeg -hide_banner'
 alias ffprobe='ffprobe -hide_banner'
+alias ffplay='ffplay -hide_banner'
 alias ssc='sudo systemctl'
 alias xo='xclip -o'
 

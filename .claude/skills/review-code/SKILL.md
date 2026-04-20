@@ -10,7 +10,8 @@ Provide a code review for uncommitted changes in the current git repository, or 
 
 **Usage:**
 - `/review-code` - reviews uncommitted changes (default)
-- `/review-code origin/main` - reviews diff between current branch and origin/main
+- `/review-code diff with origin/main` - reviews diff between current branch and origin/main
+- `/review-code against merge base` (or similar) - reviews diff between current branch and its merge base
 - `/review-code all the changes in frontend_api/ in commit abcd123` - more specific review with instructions
 
 **Agent assumptions (applies to all agents and subagents):**
@@ -23,7 +24,8 @@ To do this, follow these steps precisely:
 1. Determine the review mode and the exact diff command to use for the rest of the review:
    - If no arguments are provided, review uncommitted changes using `git diff HEAD`
    - If a branch argument is provided (e.g., "origin/main"), review the diff between the current branch and the specified branch using `git diff <branch>...HEAD`
-   - If a more complex argument is provided, follow its instructions as requested
+   - If the argument indicates a merge-base review (e.g. "against merge base", "vs merge base", "branch diff"), review against the REMOTE default branch, not the local one. Run `git fetch origin` first, then determine the default branch (usually `origin/main`) and view the diff against that. Local `main` may be stale for for merge-base reviews.
+   - If a more complex argument is provided, follow its instructions as requested.
 
    Lock in the diff command now. Use a Haiku agent to run ONLY that exact diff command and check if there are meaningful changes to review (i.e., not trivial whitespace or comment-only changes). The agent must NOT run other diff commands or suggest switching to a different diff. If no meaningful changes exist, do not proceed.
 
